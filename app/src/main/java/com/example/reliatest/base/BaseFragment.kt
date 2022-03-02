@@ -11,9 +11,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.example.reliatest.constant.Constant.DEFAULT_TOOLBAR_ID
 import com.example.reliatest.ext.addToolbar
-import com.example.reliatest.ext.removeToolbar
 
-abstract class BaseFragment<Binding: ViewDataBinding>: Fragment() {
+abstract class BaseFragment<Binding : ViewDataBinding> : Fragment() {
 
     lateinit var binding: Binding
 
@@ -41,7 +40,10 @@ abstract class BaseFragment<Binding: ViewDataBinding>: Fragment() {
     }
 
     private fun initToolbar(toolbarLayoutId: Int = this.toolbarLayoutId) {
-        if (toolbarLayoutId == DEFAULT_TOOLBAR_ID) return
+        if (toolbarLayoutId == DEFAULT_TOOLBAR_ID) {
+            (activity as? BaseActivity<*>)?.removeToolbar()
+            return
+        }
         (activity as? BaseActivity<*>)?.addToolbar(
             toolbarLayoutId = toolbarLayoutId,
             viewGroup = (activity as? BaseActivity<*>)?.binding?.root as? ViewGroup,
@@ -49,10 +51,6 @@ abstract class BaseFragment<Binding: ViewDataBinding>: Fragment() {
                 toolbarFunc(curActivity, toolbar)
             }
         )
-    }
-
-    fun removeToolbar(){
-        (activity as? BaseActivity<*>)?.removeToolbar(this.binding.root as ViewGroup)
     }
 
     open fun toolbarFunc(curActivity: AppCompatActivity?, toolbar: Toolbar?) {}

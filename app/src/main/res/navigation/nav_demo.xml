@@ -10,15 +10,8 @@
         android:name="com.example.reliatest.ui.demo.DemoFragment"
         tools:layout="@layout/fragment_demo">
 
-<!--        <action-->
-<!--            android:id="@+id/actionDemo1ToDemo2"-->
-<!--            app:destination="@id/fragmentDemo2" />-->
 
     </fragment>
 
-<!--    <fragment-->
-<!--        android:id="@+id/fragmentDemo2"-->
-<!--        android:name="com.example.reliatest.ui.demo.Demo2Fragment"-->
-<!--        tools:layout="@layout/fragment_demo2" />-->
 
 </navigation>

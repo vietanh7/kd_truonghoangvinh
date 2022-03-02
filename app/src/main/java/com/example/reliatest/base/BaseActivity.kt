@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
+import com.example.reliatest.R
 import com.example.reliatest.constant.Constant
 import com.example.reliatest.ext.addToolbar
 import com.example.reliatest.utils.AppEvent
@@ -14,6 +15,7 @@ import com.example.reliatest.utils.PopupEventListener
 import com.example.reliatest.vo.PopUp
 import com.example.reliatest.widget.BottomPopupDialog
 import com.example.reliatest.widget.PopupDialog
+import com.google.android.material.appbar.AppBarLayout
 import java.util.concurrent.CopyOnWriteArraySet
 
 abstract class BaseActivity<Binding: ViewDataBinding>: AppCompatActivity(), PopupEventListener {
@@ -73,4 +75,10 @@ abstract class BaseActivity<Binding: ViewDataBinding>: AppCompatActivity(), Popu
     open fun initViews(){}
 
     open fun initObservers(){}
+
+    fun removeToolbar() {
+        (binding.root as? ViewGroup)?.findViewById<AppBarLayout>(R.id.appBarLayout)?.apply {
+            (binding.root as? ViewGroup)?.removeView(this)
+        }
+    }
 }

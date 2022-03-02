@@ -33,9 +33,3 @@ fun AppCompatActivity.addToolbar(
     supportActionBar?.setDisplayShowTitleEnabled(false)
     toolbarCallback?.invoke(this, toolbar)
 }
-
-fun AppCompatActivity.removeToolbar(viewgroup: ViewGroup?) {
-    viewgroup?.findViewById<AppBarLayout>(R.id.appBarLayout)?.apply {
-        viewgroup.removeView(this)
-    }
-}

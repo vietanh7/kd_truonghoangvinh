@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="fragment"
+            type="com.example.reliatest.ui.main.ProductFragment" />
+
+        <variable
+            name="isLoggedIn"
+            type="boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/space_normal"
+        android:paddingVertical="@dimen/space_xxxlarge">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_small"
+            android:background="@drawable/bg_ripple"
+            android:onClick="@{fragment::onClick}"
+            android:padding="@dimen/padding_text"
+            android:text="@string/register"
+            android:textAppearance="@style/HeaderText"
+            android:textColor="@color/color_active"
+            app:layout_constraintBottom_toBottomOf="@id/tvLogin"
+            app:layout_constraintEnd_toStartOf="@id/vDivider"
+            app:layout_constraintTop_toTopOf="@id/tvLogin" />
+
+        <View
+            android:id="@+id/vDivider"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/space_small"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/tvLogin"
+            app:layout_constraintEnd_toStartOf="@id/tvLogin"
+            app:layout_constraintTop_toTopOf="@id/tvLogin" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_ripple"
+            android:onClick="@{fragment::onClick}"
+            android:padding="@dimen/padding_text"
+            android:text="@string/login"
+            android:textAppearance="@style/HeaderText"
+            android:textColor="@color/color_active"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_xlarge"
+            android:background="@drawable/bg_corner_gray"
+            android:drawableStart="@drawable/ic_search_outline"
+            android:drawablePadding="@dimen/padding_text"
+            android:hint="@string/search_by_sku"
+            android:padding="@dimen/space_small"
+            android:textSize="@dimen/text_paragraph"
+            app:layout_constraintBottom_toBottomOf="@id/tvAddProduct"
+            app:layout_constraintEnd_toStartOf="@id/tvAddProduct"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvAddProduct" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAddProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xlarge"
+            android:background="@drawable/bg_ripple"
+            android:onClick="@{isLoggedIn ? fragment::onClick : null}"
+            android:padding="@dimen/padding_text"
+            android:text="@string/add_product"
+            android:textAppearance="@style/HeaderText"
+            android:textColor="@{isLoggedIn ? @color/color_active : @color/color_disabled}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLogin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

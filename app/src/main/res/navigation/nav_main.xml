@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/fragmentProduct"
+    android:id="@+id/nav_main">
+
+    <fragment
+        android:id="@+id/fragmentProduct"
+        android:name="com.example.reliatest.ui.main.ProductFragment"
+        tools:layout="@layout/fragment_product">
+
+        <action android:id="@+id/actionProductToLogin"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/fragmentLogin"/>
+
+        <action android:id="@+id/actionProductToRegister"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/fragmentRegister"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/fragmentLogin"
+        android:name="com.example.reliatest.ui.main.LoginFragment"
+        tools:layout="@layout/fragment_login"/>
+
+    <fragment android:id="@+id/fragmentRegister"
+        android:name="com.example.reliatest.ui.main.RegisterFragment"
+        tools:layout="@layout/fragment_register"/>
+
+</navigation>
