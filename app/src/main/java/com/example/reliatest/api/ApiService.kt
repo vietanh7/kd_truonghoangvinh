@@ -34,4 +34,7 @@ interface ApiService {
 
     @POST(Constant.EndPoint.AUTH_LOGIN)
     suspend fun login(@Body param: LoginParam): Response<LoginResponse>
+
+    @GET(Constant.EndPoint.ITEMS)
+    suspend fun getProducts(): Response<ArrayList<Product>>
 }

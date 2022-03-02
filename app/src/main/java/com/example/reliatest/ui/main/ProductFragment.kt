@@ -1,19 +1,33 @@
 package com.example.reliatest.ui.main
 
+import android.util.Log
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.example.reliatest.MainApplication
 import com.example.reliatest.R
 import com.example.reliatest.base.BaseFragment
 import com.example.reliatest.databinding.FragmentProductBinding
+import com.example.reliatest.viewmodel.ProductViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProductFragment : BaseFragment<FragmentProductBinding>(), View.OnClickListener {
     override val layoutId: Int
         get() = R.layout.fragment_product
 
+    private val viewModel: ProductViewModel by viewModel()
+
     override fun initViews() {
         binding.fragment = this
         binding.isLoggedIn = MainApplication.instance.token != null
+    }
+
+    override fun initObservers() {
+        viewModel.productsLiveData.observe(this) {
+            Log.d("vinhne", "$it")
+        }
+        if (MainApplication.instance.token != null) {
+            viewModel.getProducts()
+        }
     }
 
     override fun onClick(v: View?) {
@@ -30,6 +44,7 @@ class ProductFragment : BaseFragment<FragmentProductBinding>(), View.OnClickList
             }
             R.id.tvLogout -> {
                 MainApplication.instance.setToken(null)
+                viewModel.productsLiveData.value = null
                 binding.isLoggedIn = false
             }
         }
