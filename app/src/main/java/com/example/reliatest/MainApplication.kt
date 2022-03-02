@@ -24,6 +24,9 @@ class MainApplication : Application() {
     var user: User? = null
         private set
 
+    var token: String? = null
+        private set
+
     override fun onCreate() {
         super.onCreate()
         instance = this
@@ -43,6 +46,10 @@ class MainApplication : Application() {
     fun setCurrentUser(user: User?) {
 //        prefUtil.user = user
         this.user = user
+    }
+
+    fun setToken(token: String?) {
+        this.token = token
     }
 
 //    fun getUser(): User? = prefUtil.user

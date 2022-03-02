@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Vinh Example</string>
+    <string name="app_name">ReliaTest</string>
     <string name="default_toolbar_title">Title</string>
     <string name="dismiss">Dismiss</string>
     <string name="demo1">Demo 1</string>
@@ -13,5 +13,9 @@
     <string name="add_product">Add Product</string>
     <string name="email_address">Email address</string>
     <string name="password">Password</string>
+    <string name="err_email_empty">Please enter your email address</string>
+    <string name="err_password_empty">Please enter your password</string>
+    <string name="err_email_invalid">Please enter a valid email address</string>
+    <string name="err_password_invalid">Password must have at least 6 characters</string>
 
 </resources>

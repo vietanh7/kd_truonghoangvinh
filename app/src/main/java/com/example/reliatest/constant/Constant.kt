@@ -13,4 +13,11 @@ object Constant {
     const val DEFAULT_PASSWORD = "123123"
     const val DEFAULT_FCM_TOKEN =
         "dYJ0f3M1OFs:APA91bExoqRlwUvJ525669Ip7lI3jSl-xqCCH6XuXj5EgwrpwnsalmgUCXtu2fwvloZSlGqRxwYd3tqh6kGlZNnrow6diAXw679JOHvc_DlnexXoVTDUEHe8hvWM3X54cbHE1ATJgGuO"
+
+    const val RELIA_BASE_URL = "https://hoodwink.medkomtek.net/api/"
+
+    object EndPoint {
+        const val REGISTER = "register"
+        const val AUTH_LOGIN = "auth/login"
+    }
 }

@@ -59,6 +59,36 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_ripple"
+            android:onClick="@{fragment::onClick}"
+            android:padding="@dimen/padding_text"
+            android:text="@string/logout"
+            android:textAppearance="@style/HeaderText"
+            android:textColor="@color/color_active"
+            android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrierLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="tvLogin,tvLogout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{isLoggedIn ? View.GONE : View.VISIBLE}"
+            app:constraint_referenced_ids="tvRegister,tvLogin,vDivider" />
+
+
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -78,15 +108,15 @@
             android:id="@+id/tvAddProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_xlarge"
-            android:background="@drawable/bg_ripple"
+            android:layout_marginTop="@dimen/space_xxxlarge"
+            android:background="@{isLoggedIn ? @drawable/bg_ripple : null}"
             android:onClick="@{isLoggedIn ? fragment::onClick : null}"
             android:padding="@dimen/padding_text"
             android:text="@string/add_product"
             android:textAppearance="@style/HeaderText"
             android:textColor="@{isLoggedIn ? @color/color_active : @color/color_disabled}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvLogin" />
+            app:layout_constraintTop_toBottomOf="@id/barrierLogin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,12 +1,10 @@
 package com.example.reliatest.ui.main
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.example.reliatest.R
+import com.example.reliatest.base.BaseActivity
+import com.example.reliatest.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+    override val layoutId: Int
+        get() = R.layout.activity_main
 }

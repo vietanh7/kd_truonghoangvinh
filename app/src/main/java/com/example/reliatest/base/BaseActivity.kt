@@ -18,7 +18,7 @@ import com.example.reliatest.widget.PopupDialog
 import com.google.android.material.appbar.AppBarLayout
 import java.util.concurrent.CopyOnWriteArraySet
 
-abstract class BaseActivity<Binding: ViewDataBinding>: AppCompatActivity(), PopupEventListener {
+abstract class BaseActivity<Binding : ViewDataBinding> : AppCompatActivity(), PopupEventListener {
 
     lateinit var binding: Binding
 
@@ -72,9 +72,9 @@ abstract class BaseActivity<Binding: ViewDataBinding>: AppCompatActivity(), Popu
 
     open fun toolbarFunc(curActivity: AppCompatActivity?, toolbar: Toolbar?) {}
 
-    open fun initViews(){}
+    open fun initViews() {}
 
-    open fun initObservers(){}
+    open fun initObservers() {}
 
     fun removeToolbar() {
         (binding.root as? ViewGroup)?.findViewById<AppBarLayout>(R.id.appBarLayout)?.apply {

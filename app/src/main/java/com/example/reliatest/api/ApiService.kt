@@ -1,11 +1,11 @@
 package com.example.reliatest.api
 
+import com.example.reliatest.constant.Constant
 import com.example.reliatest.constant.Constant.ITEM_PER_PAGE
-import com.example.reliatest.model.Feed
-import com.example.reliatest.model.ListResponse
-import com.example.reliatest.model.ObjectResponse
-import com.example.reliatest.model.User
+import com.example.reliatest.model.*
+import com.example.reliatest.param.LoginDemoParam
 import com.example.reliatest.param.LoginParam
+import com.example.reliatest.param.RegisterParam
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -15,7 +15,7 @@ import retrofit2.http.Query
 interface ApiService {
 
     @POST("users-login")
-    suspend fun login(@Body login: LoginParam): Response<ObjectResponse<User>>
+    suspend fun loginDemo(@Body param: LoginDemoParam): Response<ObjectResponse<User>>
 
     @GET("search-user")
     suspend fun getUsers(
@@ -28,4 +28,10 @@ interface ApiService {
         @Query("page") page: Int = 1,
         @Query("current_per_page") perPage: Int = ITEM_PER_PAGE
     ): Response<ListResponse<Feed>>
+
+    @POST(Constant.EndPoint.REGISTER)
+    suspend fun register(@Body param: RegisterParam): Response<RegisterResponse>
+
+    @POST(Constant.EndPoint.AUTH_LOGIN)
+    suspend fun login(@Body param: LoginParam): Response<LoginResponse>
 }

@@ -14,9 +14,9 @@ import com.example.reliatest.constant.Constant.DEFAULT_FCM_TOKEN
 import com.example.reliatest.constant.Constant.DEFAULT_PASSWORD
 import com.example.reliatest.databinding.FragmentDemoBinding
 import com.example.reliatest.ext.gone
-import com.example.reliatest.param.LoginParam
+import com.example.reliatest.param.LoginDemoParam
 import com.example.reliatest.utils.PopupUtil
-import com.example.reliatest.viewmodel.LoginViewModel
+import com.example.reliatest.viewmodel.LoginDemoViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -28,7 +28,7 @@ class DemoFragment : BaseFragment<FragmentDemoBinding>(), View.OnClickListener {
     override val toolbarLayoutId: Int
         get() = R.layout.layout_toolbar
 
-    private val viewModel: LoginViewModel by viewModel()
+    private val viewModel: LoginDemoViewModel by viewModel()
 
     override fun toolbarFunc(curActivity: AppCompatActivity?, toolbar: Toolbar?) {
         toolbar?.run {
@@ -50,7 +50,7 @@ class DemoFragment : BaseFragment<FragmentDemoBinding>(), View.OnClickListener {
             activity?.finish()
         }
 
-        viewModel.errorLiveData.observe(this) {
+        viewModel.networkError.observe(this) {
             PopupUtil.showPopupError(it.first)
         }
     }
@@ -58,7 +58,7 @@ class DemoFragment : BaseFragment<FragmentDemoBinding>(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btnLogin -> {
-                viewModel.login(LoginParam(DEFAULT_EMAIL, DEFAULT_PASSWORD, DEFAULT_FCM_TOKEN))
+                viewModel.login(LoginDemoParam(DEFAULT_EMAIL, DEFAULT_PASSWORD, DEFAULT_FCM_TOKEN))
             }
         }
     }

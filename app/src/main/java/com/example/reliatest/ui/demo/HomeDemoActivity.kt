@@ -31,7 +31,7 @@ class HomeDemoActivity : BaseActivity<ActivityHomeDemoBinding>(), View.OnClickLi
         viewModel.feedLiveData.observe(this) {
             Log.d("vinhne", "$it")
         }
-        viewModel.errorLiveData.observe(this) {
+        viewModel.networkError.observe(this) {
             PopupUtil.showPopupError(it.first)
         }
 //        viewModel.getFeeds()
