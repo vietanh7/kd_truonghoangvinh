@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_demo"
+    app:startDestination="@id/fragmentDemo1">
+
+    <fragment
+        android:id="@+id/fragmentDemo1"
+        android:name="com.example.reliatest.ui.demo.DemoFragment"
+        tools:layout="@layout/fragment_demo">
+
+<!--        <action-->
+<!--            android:id="@+id/actionDemo1ToDemo2"-->
+<!--            app:destination="@id/fragmentDemo2" />-->
+
+    </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/fragmentDemo2"-->
+<!--        android:name="com.example.reliatest.ui.demo.Demo2Fragment"-->
+<!--        tools:layout="@layout/fragment_demo2" />-->
+
+</navigation>

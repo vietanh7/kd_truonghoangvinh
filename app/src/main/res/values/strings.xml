@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Relia Test</string>
+    <string name="app_name">Vinh Example</string>
+    <string name="default_toolbar_title">Title</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="demo1">Demo 1</string>
+    <string name="demo2">Demo 2</string>
+    <string name="go_to_demo_2">Go to Demo 2</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="welcome">Welcome %s</string>
 </resources>

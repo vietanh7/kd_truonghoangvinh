@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="button_yes">#017991</color>
+    <color name="button_no">#CCCCCC</color>
+    <color name="blackAlpha50">#80000000</color>
+    <color name="gray99">#999999</color>
+    <color name="grayd5">#D5D5D5</color>
 </resources>

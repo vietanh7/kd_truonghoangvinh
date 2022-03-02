@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="hasArrow"
+            type="Boolean" />
+
+        <variable
+            name="action1"
+            type="String" />
+
+        <variable
+            name="action2"
+            type="String" />
+
+        <variable
+            name="action3"
+            type="String" />
+
+        <variable
+            name="action4"
+            type="String" />
+
+        <variable
+            name="action5"
+            type="String" />
+
+        <variable
+            name="action6"
+            type="String" />
+
+        <variable
+            name="clickListener"
+            type="com.example.reliatest.listener.BottomSheetListener" />
+
+        <import type="android.view.View" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_white_top_corner">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            android:lineSpacingExtra="4dp"
+            android:text="@{title}"
+            android:gravity="center"
+            android:textColor="@color/blackAlpha50"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAction1"
+            style="@style/ItemBottomSheet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_ripple"
+            android:drawableEnd="@{hasArrow == true ? @drawable/ic_next : null }"
+            android:onClick="@{() -> clickListener.onClickAction1Listener()}"
+            android:text="@{action1}"
+            android:textColor="@color/black"
+            android:visibility="@{action1 == null || action1 == `` ? View.GONE : View.VISIBLE }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            tools:text="Action 1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAction2"
+            style="@style/ItemBottomSheet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_ripple"
+            android:drawableEnd="@{hasArrow == true ? @drawable/ic_next : null }"
+            android:onClick="@{() -> clickListener.onClickAction2Listener()}"
+            android:text="@{action2}"
+            android:textColor="@color/black"
+            android:visibility="@{action2 == null || action2 == `` ? View.GONE : View.VISIBLE }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAction1"
+            tools:text="Action 2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAction3"
+            style="@style/ItemBottomSheet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_ripple"
+            android:drawableEnd="@{hasArrow == true ? @drawable/ic_next : null }"
+            android:onClick="@{() -> clickListener.onClickAction3Listener()}"
+            android:text="@{action3}"
+            android:textColor="@color/black"
+            android:visibility="@{action3 == null || action3 == `` ? View.GONE : View.VISIBLE }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAction2"
+            tools:text="Action 3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAction4"
+            style="@style/ItemBottomSheet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_ripple"
+            android:drawableEnd="@{hasArrow == true ? @drawable/ic_next : null }"
+            android:onClick="@{() -> clickListener.onClickAction4Listener()}"
+            android:text="@{action4}"
+            android:textColor="@color/black"
+            android:visibility="@{action4 == null || action4 == `` ? View.GONE : View.VISIBLE }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAction3"
+            tools:text="Action 4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAction5"
+            style="@style/ItemBottomSheet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_ripple"
+            android:drawableEnd="@{hasArrow == true ? @drawable/ic_next : null }"
+            android:onClick="@{() -> clickListener.onClickAction5Listener()}"
+            android:text="@{action5}"
+            android:textColor="@color/black"
+            android:visibility="@{action5 == null || action5 == `` ? View.GONE : View.VISIBLE }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAction4"
+            tools:text="Action 5" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAction6"
+            style="@style/ItemBottomSheet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_ripple"
+            android:drawableEnd="@{hasArrow == true ? @drawable/ic_next : null }"
+            android:onClick="@{() -> clickListener.onClickAction6Listener()}"
+            android:text="@{action6}"
+            android:textColor="@color/black"
+            android:visibility="@{action6 == null || action6 == `` ? View.GONE : View.VISIBLE }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAction5"
+            tools:text="Action 6" />
+
+        <View
+            android:id="@+id/line1"
+            style="@style/LineHorizontal"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAction1" />
+
+        <View
+            android:id="@+id/line2"
+            style="@style/LineHorizontal"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAction2" />
+
+        <View
+            android:id="@+id/line3"
+            style="@style/LineHorizontal"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAction3" />
+
+        <View
+            android:id="@+id/line4"
+            style="@style/LineHorizontal"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAction4" />
+
+        <View
+            android:id="@+id/line5"
+            style="@style/LineHorizontal"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAction5" />
+
+
+        <View
+            android:id="@+id/line6"
+            style="@style/LineHorizontal"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAction6" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrierAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="tvAction1,tvAction2,tvAction3,tvAction4,tvAction5,tvAction6" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDismiss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_ripple"
+            android:onClick="@{() -> clickListener.onClickDismissListener()}"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="@string/dismiss"
+            android:textAlignment="center"
+            android:textColor="@color/gray99"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrierAction" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
