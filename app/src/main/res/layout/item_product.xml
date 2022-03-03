@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -11,21 +10,22 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvId"
             style="@style/TableText.Content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight=".25"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@{product.sku}"
-            app:layout_constraintEnd_toStartOf="@id/glVertical1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             tools:text="Sku id" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -33,69 +33,38 @@
             style="@style/TableText.Content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight=".45"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@{product.product_name}"
-            app:layout_constraintBottom_toBottomOf="@id/tvId"
-            app:layout_constraintEnd_toStartOf="@id/glVertical2"
-            app:layout_constraintStart_toEndOf="@id/glVertical1"
-            app:layout_constraintTop_toTopOf="@id/tvId"
             tools:text="Name" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvEdit"
             style="@style/TableText.Action"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.15"
             android:background="@drawable/bg_ripple"
-            android:paddingStart="@dimen/space_small"
-            android:paddingEnd="@dimen/space_small"
             android:text="@string/edit"
-            android:textColor="@color/color_active"
-            app:layout_constraintEnd_toStartOf="@id/vDivider"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@id/glVertical2"
-            app:layout_constraintTop_toTopOf="@id/tvId" />
+            android:textColor="@color/color_active" />
 
         <View
             android:id="@+id/vDivider"
-            android:layout_width="1dp"
+            android:layout_width="0.5dp"
             android:layout_height="20dp"
-            android:background="@color/gray99"
-            app:layout_constraintBottom_toBottomOf="@id/tvId"
-            app:layout_constraintEnd_toStartOf="@id/tvDelete"
-            app:layout_constraintStart_toEndOf="@id/tvEdit"
-            app:layout_constraintTop_toTopOf="@id/tvId" />
+            android:background="@color/gray99" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDelete"
             style="@style/TableText.Action"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.15"
             android:background="@drawable/bg_ripple"
-            android:paddingStart="@dimen/space_small"
-            android:paddingEnd="@dimen/space_small"
             android:text="@string/delete"
-            android:textColor="@color/color_negative"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/vDivider"
-            app:layout_constraintTop_toTopOf="@id/tvId" />
+            android:textColor="@color/color_negative" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glVertical1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.25" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glVertical2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.7" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </layout>

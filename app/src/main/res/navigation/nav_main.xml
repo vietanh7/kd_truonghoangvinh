@@ -12,19 +12,35 @@
 
         <action
             android:id="@+id/actionProductToLogin"
-            app:destination="@id/fragmentLogin" />
+            app:destination="@id/fragmentLogin"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
         <action
             android:id="@+id/actionProductToRegister"
-            app:destination="@id/fragmentRegister" />
+            app:destination="@id/fragmentRegister"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
         <action
             android:id="@+id/actionProductToAdd"
-            app:destination="@id/fragmentAddProduct" />
+            app:destination="@id/fragmentAddProduct"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
         <action
             android:id="@+id/actionProductToUpdate"
-            app:destination="@id/fragmentUpdateProduct" />
+            app:destination="@id/fragmentUpdateProduct"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
 
     </fragment>
