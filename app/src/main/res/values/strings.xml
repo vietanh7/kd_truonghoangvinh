@@ -11,6 +11,7 @@
     <string name="register">Register</string>
     <string name="search_by_sku">Search By SKU</string>
     <string name="add_product">Add Product</string>
+    <string name="update_product">Update Product</string>
     <string name="add">Add</string>
     <string name="email_address">Email address</string>
     <string name="password">Password</string>
@@ -28,5 +29,6 @@
     <string name="err_email_invalid">Please enter a valid email address</string>
     <string name="err_password_invalid">Password must have at least 6 characters</string>
     <string name="err_fill_all_required_field">Please fill in all the required fields</string>
+    <string name="update">Update</string>
 
 </resources>

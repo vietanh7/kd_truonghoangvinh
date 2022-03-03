@@ -6,6 +6,7 @@ import com.example.reliatest.base.BaseViewModel
 import com.example.reliatest.model.Product
 import com.example.reliatest.param.AddProductParam
 import com.example.reliatest.param.SearchProductParam
+import com.example.reliatest.param.UpdateProductParam
 import com.example.reliatest.repository.ProductRepository
 import com.example.reliatest.utils.PopupUtil
 import com.example.reliatest.vo.ReliaResource
@@ -15,6 +16,7 @@ class ProductViewModel(private val repository: ProductRepository) : BaseViewMode
 
     val productsLiveData = MediatorLiveData<ArrayList<Product>?>()
     val addProductLiveData = MediatorLiveData<Product>()
+    val updateProductLiveData = MediatorLiveData<Product>()
 
     fun getProducts() {
         viewModelScope.launch {
@@ -59,6 +61,25 @@ class ProductViewModel(private val repository: ProductRepository) : BaseViewMode
                         resource.data?.let {
                             if (it.message.isNullOrEmpty()) {
                                 addProductLiveData.value = it
+                            } else {
+                                PopupUtil.showPopupError(it.message)
+                            }
+                        }
+                    }
+                    is ReliaResource.Error -> Unit
+                }
+            }
+        }
+    }
+
+    fun updateProducts(param: UpdateProductParam) {
+        viewModelScope.launch {
+            updateProductLiveData.addSource(repository.updateProducts(param)) { resource ->
+                when (resource) {
+                    is ReliaResource.Success -> {
+                        resource.data?.let {
+                            if (it.message.isNullOrEmpty()) {
+                                updateProductLiveData.value = it
                             } else {
                                 PopupUtil.showPopupError(it.message)
                             }

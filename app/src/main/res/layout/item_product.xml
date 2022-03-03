@@ -9,9 +9,6 @@
             name="product"
             type="com.example.reliatest.model.Product" />
 
-        <variable
-            name="viewholder"
-            type="com.example.reliatest.adapter.ProductAdapter.ProductViewHolder" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +48,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_ripple"
-            android:onClick="@{viewholder::onClick}"
             android:paddingStart="@dimen/space_small"
             android:paddingEnd="@dimen/space_small"
             android:text="@string/edit"
@@ -77,7 +73,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_ripple"
-            android:onClick="@{viewholder::onClick}"
             android:paddingStart="@dimen/space_small"
             android:paddingEnd="@dimen/space_small"
             android:text="@string/delete"

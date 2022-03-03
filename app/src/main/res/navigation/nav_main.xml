@@ -34,6 +34,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
 
+        <action
+            android:id="@+id/actionProductToUpdate"
+            app:destination="@id/fragmentUpdateProduct"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
 
     </fragment>
 
@@ -51,5 +59,14 @@
         android:id="@+id/fragmentAddProduct"
         android:name="com.example.reliatest.ui.main.AddProductFragment"
         tools:layout="@layout/fragment_add_product" />
+
+    <fragment
+        android:id="@+id/fragmentUpdateProduct"
+        android:name="com.example.reliatest.ui.main.UpdateProductFragment"
+        tools:layout="@layout/fragment_update_product">
+        <argument
+            android:name="product"
+            app:argType="com.example.reliatest.model.Product" />
+    </fragment>
 
 </navigation>

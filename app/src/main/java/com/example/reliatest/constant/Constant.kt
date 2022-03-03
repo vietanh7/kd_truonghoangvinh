@@ -23,5 +23,6 @@ object Constant {
         const val ITEM = "item/"
         const val SEARCH = "search"
         const val ADD = "add"
+        const val UPDATE = "update"
     }
 }

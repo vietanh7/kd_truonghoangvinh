@@ -9,6 +9,7 @@ import com.example.reliatest.R
 import com.example.reliatest.adapter.ProductAdapter
 import com.example.reliatest.base.BaseFragment
 import com.example.reliatest.databinding.FragmentProductBinding
+import com.example.reliatest.model.Product
 import com.example.reliatest.param.SearchProductParam
 import com.example.reliatest.utils.PopupUtil
 import com.example.reliatest.viewmodel.ProductViewModel
@@ -35,7 +36,8 @@ class ProductFragment : BaseFragment<FragmentProductBinding>(), View.OnClickList
 
     override fun initAdapters() {
         with(binding.incTableProduct.rcvProducts) {
-            productAdapter = ProductAdapter()
+            productAdapter =
+                ProductAdapter(::onEditProduct, ::onDeleteProduct)
             val dividerItemDecoration = DividerItemDecoration(
                 context,
                 DividerItemDecoration.VERTICAL
@@ -83,6 +85,15 @@ class ProductFragment : BaseFragment<FragmentProductBinding>(), View.OnClickList
                 }
             }
         }
+    }
+
+    private fun onEditProduct(product: Product) {
+        val action = ProductFragmentDirections.actionProductToUpdate(product)
+        findNavController().navigate(action)
+    }
+
+    private fun onDeleteProduct(product: Product) {
+
     }
 
     override fun onQueryTextChange(input: String?): Boolean {

@@ -35,4 +35,7 @@ interface ApiService {
 
     @POST(Constant.EndPoint.ITEM + Constant.EndPoint.ADD)
     suspend fun addProduct(@Body param: AddProductParam): Response<Product>
+
+    @POST(Constant.EndPoint.ITEM + Constant.EndPoint.UPDATE)
+    suspend fun updateProduct(@Body param: UpdateProductParam): Response<Product>
 }
