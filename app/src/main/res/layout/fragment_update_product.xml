@@ -40,6 +40,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_corner_top"
                     android:enabled="false"
+                    android:maxLines="1"
                     android:text="@{product.sku}" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -55,6 +56,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
+                    android:inputType="text"
+                    android:maxLines="1"
                     android:text="@{product.product_name}" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -72,6 +75,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:inputType="number"
+                    android:maxLines="1"
                     android:text="@{product.qty.toString()}" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -88,6 +92,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:inputType="number"
+                    android:maxLines="1"
                     android:text="@{product.price.toString()}" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -103,6 +108,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
+                    android:inputType="text"
+                    android:maxLines="1"
                     android:text="@{product.unit}" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -119,6 +126,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_corner_bottom"
                     android:inputType="number"
+                    android:maxLines="1"
                     android:text="@{product.status.toString()}" />
 
             </com.google.android.material.textfield.TextInputLayout>
