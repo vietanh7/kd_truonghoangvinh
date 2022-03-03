@@ -17,7 +17,9 @@ class ProductViewModel(private val repository: ProductRepository) : BaseViewMode
 
     val productsLiveData = MediatorLiveData<ArrayList<Product>?>()
     val addProductLiveData = MediatorLiveData<Product>()
-    val updateProductLiveData = MediatorLiveData<Product>()
+    val updateProductLiveData = MediatorLiveData<Product?>()
+
+    var isSearching = false
 
     fun getProducts() {
         viewModelScope.launch {
@@ -61,6 +63,11 @@ class ProductViewModel(private val repository: ProductRepository) : BaseViewMode
                     is ReliaResource.Success -> {
                         resource.data?.let {
                             if (it.message.isNullOrEmpty()) {
+                                if (!isSearching){
+                                    val temp = productsLiveData.value
+                                    temp?.add(it)
+                                    productsLiveData.value = temp
+                                }
                                 addProductLiveData.value = it
                             } else {
                                 PopupUtil.showPopupError(it.message)
@@ -78,11 +85,18 @@ class ProductViewModel(private val repository: ProductRepository) : BaseViewMode
             updateProductLiveData.addSource(repository.updateProducts(param)) { resource ->
                 when (resource) {
                     is ReliaResource.Success -> {
-                        resource.data?.let {
-                            if (it.message.isNullOrEmpty()) {
-                                updateProductLiveData.value = it
+                        resource.data?.let { product ->
+                            if (product.message.isNullOrEmpty()) {
+                                val temp = productsLiveData.value
+                                val index = temp?.indexOfFirst { it.sku == product.sku }
+                                index?.let {
+                                    temp[index] = product
+                                    productsLiveData.value = temp
+                                }
+                                updateProductLiveData.value = product
+
                             } else {
-                                PopupUtil.showPopupError(it.message)
+                                PopupUtil.showPopupError(product.message)
                             }
                         }
                     }
@@ -97,7 +111,7 @@ class ProductViewModel(private val repository: ProductRepository) : BaseViewMode
             productsLiveData.addSource(repository.deleteProducts(param)) { resource ->
                 when (resource) {
                     is ReliaResource.Success -> {
-                        resource.data?.let {product ->
+                        resource.data?.let { product ->
                             if (product.message.isNullOrEmpty()) {
                                 val temp = productsLiveData.value
                                 val index = temp?.indexOfFirst { it.sku == product.sku }

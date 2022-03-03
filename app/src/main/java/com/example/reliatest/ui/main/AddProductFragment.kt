@@ -12,7 +12,7 @@ import com.example.reliatest.databinding.FragmentAddProductBinding
 import com.example.reliatest.param.AddProductParam
 import com.example.reliatest.utils.PopupUtil
 import com.example.reliatest.viewmodel.ProductViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
 class AddProductFragment : BaseFragment<FragmentAddProductBinding>(), View.OnClickListener {
@@ -23,7 +23,9 @@ class AddProductFragment : BaseFragment<FragmentAddProductBinding>(), View.OnCli
     override val layoutId: Int
         get() = R.layout.fragment_add_product
 
-    private val viewModel: ProductViewModel by viewModel()
+    //    private val viewModel: ProductViewModel by viewModel()
+    private val viewModel by sharedViewModel<ProductViewModel>()
+
 
     override fun toolbarFunc(curActivity: AppCompatActivity?, toolbar: Toolbar?) {
         toolbar?.run {
@@ -40,7 +42,9 @@ class AddProductFragment : BaseFragment<FragmentAddProductBinding>(), View.OnCli
 
     override fun initObservers() {
         viewModel.addProductLiveData.observe(this) {
-            findNavController().popBackStack()
+            it?.let {
+                findNavController().popBackStack()
+            }
         }
     }
 
@@ -65,6 +69,11 @@ class AddProductFragment : BaseFragment<FragmentAddProductBinding>(), View.OnCli
                 status.toInt()
             )
         )
+    }
+
+    override fun onDestroy() {
+        viewModel.addProductLiveData.value = null
+        super.onDestroy()
     }
 
     override fun onClick(v: View?) {

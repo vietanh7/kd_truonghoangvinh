@@ -13,7 +13,7 @@ import com.example.reliatest.databinding.FragmentUpdateProductBinding
 import com.example.reliatest.param.UpdateProductParam
 import com.example.reliatest.utils.PopupUtil
 import com.example.reliatest.viewmodel.ProductViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class UpdateProductFragment : BaseFragment<FragmentUpdateProductBinding>(), View.OnClickListener {
 
@@ -23,7 +23,9 @@ class UpdateProductFragment : BaseFragment<FragmentUpdateProductBinding>(), View
     override val layoutId: Int
         get() = R.layout.fragment_update_product
 
-    private val viewModel: ProductViewModel by viewModel()
+    //    private val viewModel: ProductViewModel by viewModel()
+    private val viewModel by sharedViewModel<ProductViewModel>()
+
 
     private val args: UpdateProductFragmentArgs by navArgs()
 
@@ -43,7 +45,9 @@ class UpdateProductFragment : BaseFragment<FragmentUpdateProductBinding>(), View
 
     override fun initObservers() {
         viewModel.updateProductLiveData.observe(this) {
-            findNavController().popBackStack()
+            it?.let {
+                findNavController().popBackStack()
+            }
         }
     }
 
@@ -68,6 +72,11 @@ class UpdateProductFragment : BaseFragment<FragmentUpdateProductBinding>(), View
                 status.toInt()
             )
         )
+    }
+
+    override fun onDestroy() {
+        viewModel.updateProductLiveData.value = null
+        super.onDestroy()
     }
 
     override fun onClick(v: View?) {
