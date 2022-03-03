@@ -13,6 +13,11 @@
     <string name="add_product">Add Product</string>
     <string name="email_address">Email address</string>
     <string name="password">Password</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="sku">Sku</string>
+    <string name="product_name">Product name</string>
+    <string name="action">Action</string>
     <string name="err_email_empty">Please enter your email address</string>
     <string name="err_password_empty">Please enter your password</string>
     <string name="err_email_invalid">Please enter a valid email address</string>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_border">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSku"
+            style="@style/TableText"
+            android:layout_width="0dp"
+            android:text="@string/sku"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@id/glVertical1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TableText"
+            android:layout_width="0dp"
+            android:text="@string/product_name"
+            app:layout_constraintBottom_toBottomOf="@id/tvSku"
+            app:layout_constraintEnd_toStartOf="@id/glVertical2"
+            app:layout_constraintStart_toEndOf="@id/glVertical1"
+            app:layout_constraintTop_toTopOf="@id/tvSku" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TableText"
+            android:layout_width="0dp"
+            android:text="@string/action"
+            app:layout_constraintBottom_toBottomOf="@id/tvSku"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glVertical2"
+            app:layout_constraintTop_toTopOf="@id/tvSku" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvProducts"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dividerHorizontal"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_product" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glVertical1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glVertical2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/glVertical1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/glVertical2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/dividerHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSku" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

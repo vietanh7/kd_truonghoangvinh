@@ -35,6 +35,7 @@ abstract class BaseFragment<Binding : ViewDataBinding> : Fragment() {
 
         initToolbar()
         initViews()
+        initAdapters()
         initObservers()
         initEventListeners()
     }
@@ -56,6 +57,8 @@ abstract class BaseFragment<Binding : ViewDataBinding> : Fragment() {
     open fun toolbarFunc(curActivity: AppCompatActivity?, toolbar: Toolbar?) {}
 
     open fun initViews() {}
+
+    open fun initAdapters() {}
 
     open fun initEventListeners() {}
 

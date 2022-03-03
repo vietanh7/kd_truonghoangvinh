@@ -18,8 +18,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingHorizontal="@dimen/space_normal"
-        android:paddingVertical="@dimen/space_xxxlarge">
+        android:paddingStart="@dimen/space_small"
+        android:paddingTop="@dimen/space_xxxlarge"
+        android:paddingEnd="@dimen/space_small"
+        android:paddingBottom="@dimen/space_xlarge">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvRegister"
@@ -68,7 +70,7 @@
             android:padding="@dimen/padding_text"
             android:text="@string/logout"
             android:textAppearance="@style/HeaderText"
-            android:textColor="@color/color_active"
+            android:textColor="@color/color_negative"
             android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -90,6 +92,7 @@
 
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtSearch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/space_xlarge"
@@ -117,6 +120,17 @@
             android:textColor="@{isLoggedIn ? @color/color_active : @color/color_disabled}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/barrierLogin" />
+
+        <include
+            android:id="@+id/incTableProduct"
+            layout="@layout/layout_table_product"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/space_large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtSearch" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
