@@ -24,7 +24,6 @@ class ProductFragment : BaseFragment<FragmentProductBinding>(), View.OnClickList
 
     private lateinit var productAdapter: ProductAdapter
 
-
     override fun initViews() {
         binding.fragment = this
         binding.isLoggedIn = MainApplication.instance.token != null
@@ -69,6 +68,8 @@ class ProductFragment : BaseFragment<FragmentProductBinding>(), View.OnClickList
                 findNavController().navigate(action)
             }
             R.id.tvAddProduct -> {
+                val action = ProductFragmentDirections.actionProductToAdd()
+                findNavController().navigate(action)
             }
             R.id.tvLogout -> {
                 binding.isLoggedIn = false

@@ -1,6 +1,7 @@
 package com.example.reliatest.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -13,7 +14,9 @@ data class Product(
     val unit: String? = null,
     val image: String? = null,
     val status: Int? = null,
+    @SerializedName(value = "createdAt")
     val created_at: String? = null,
+    @SerializedName(value = "updatedAt")
     val updated_at: String? = null,
 
     val success: Boolean? = null,

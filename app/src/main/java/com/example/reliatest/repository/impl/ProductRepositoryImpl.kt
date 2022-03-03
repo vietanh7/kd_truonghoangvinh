@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import com.example.reliatest.api.ApiService
 import com.example.reliatest.data.remote.ReliaNetworkBoundResource
 import com.example.reliatest.model.Product
+import com.example.reliatest.param.AddProductParam
 import com.example.reliatest.param.SearchProductParam
 import com.example.reliatest.repository.ProductRepository
 import com.example.reliatest.vo.ReliaResource
@@ -24,4 +25,9 @@ class ProductRepositoryImpl(val api: ApiService) : ProductRepository {
         }.build().asLiveData()
     }
 
+    override suspend fun addProducts(param: AddProductParam): LiveData<ReliaResource<Product>> {
+        return object : ReliaNetworkBoundResource<Product>() {
+            override suspend fun createCall(): Response<Product> = api.addProduct(param)
+        }.build().asLiveData()
+    }
 }
