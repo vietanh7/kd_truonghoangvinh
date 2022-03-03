@@ -5,6 +5,7 @@ import com.example.reliatest.api.ApiService
 import com.example.reliatest.data.remote.ReliaNetworkBoundResource
 import com.example.reliatest.model.Product
 import com.example.reliatest.param.AddProductParam
+import com.example.reliatest.param.DeleteProductParam
 import com.example.reliatest.param.SearchProductParam
 import com.example.reliatest.param.UpdateProductParam
 import com.example.reliatest.repository.ProductRepository
@@ -35,6 +36,12 @@ class ProductRepositoryImpl(val api: ApiService) : ProductRepository {
     override suspend fun updateProducts(param: UpdateProductParam): LiveData<ReliaResource<Product>> {
         return object : ReliaNetworkBoundResource<Product>() {
             override suspend fun createCall(): Response<Product> = api.updateProduct(param)
+        }.build().asLiveData()
+    }
+
+    override suspend fun deleteProducts(param: DeleteProductParam): LiveData<ReliaResource<Product>> {
+        return object : ReliaNetworkBoundResource<Product>() {
+            override suspend fun createCall(): Response<Product> = api.deleteProduct(param)
         }.build().asLiveData()
     }
 }

@@ -38,4 +38,7 @@ interface ApiService {
 
     @POST(Constant.EndPoint.ITEM + Constant.EndPoint.UPDATE)
     suspend fun updateProduct(@Body param: UpdateProductParam): Response<Product>
+
+    @POST(Constant.EndPoint.ITEM + Constant.EndPoint.DELETE)
+    suspend fun deleteProduct(@Body param: DeleteProductParam): Response<Product>
 }

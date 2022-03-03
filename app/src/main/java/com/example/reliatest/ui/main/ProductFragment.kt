@@ -10,6 +10,7 @@ import com.example.reliatest.adapter.ProductAdapter
 import com.example.reliatest.base.BaseFragment
 import com.example.reliatest.databinding.FragmentProductBinding
 import com.example.reliatest.model.Product
+import com.example.reliatest.param.DeleteProductParam
 import com.example.reliatest.param.SearchProductParam
 import com.example.reliatest.utils.PopupUtil
 import com.example.reliatest.viewmodel.ProductViewModel
@@ -93,8 +94,13 @@ class ProductFragment : BaseFragment<FragmentProductBinding>(), View.OnClickList
     }
 
     private fun onDeleteProduct(product: Product) {
-
+        PopupUtil.showPopupConfirm(
+            getString(R.string.msg_confirm_delete_product)
+        ) {
+            viewModel.deleteProducts(DeleteProductParam(product.sku ?: return@showPopupConfirm))
+        }
     }
+
 
     override fun onQueryTextChange(input: String?): Boolean {
         if (input?.isEmpty() == true) {

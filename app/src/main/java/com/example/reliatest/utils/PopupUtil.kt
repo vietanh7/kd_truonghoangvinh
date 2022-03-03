@@ -32,4 +32,26 @@ object PopupUtil {
             )
         )
     }
+
+    fun showPopupConfirm(msg: String, onConfirm: () -> Unit) {
+        AppEvent.notifyShowPopUp(
+            PopUp(
+                R.layout.layout_popup,
+                callback = { binding: ViewDataBinding?, _, _ ->
+                    (binding as? LayoutPopupBinding)?.apply {
+                        message = msg
+                        left = "Close"
+                        right = "Confirm"
+                        clickListener = PopUpListener(
+                            clickLeftListener = { AppEvent.notifyClosePopUp() },
+                            clickRightListener = {
+                                AppEvent.notifyClosePopUp()
+                                onConfirm.invoke()
+                            }
+                        )
+                    }
+                }
+            )
+        )
+    }
 }

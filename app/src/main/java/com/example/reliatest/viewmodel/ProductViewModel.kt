@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.reliatest.base.BaseViewModel
 import com.example.reliatest.model.Product
 import com.example.reliatest.param.AddProductParam
+import com.example.reliatest.param.DeleteProductParam
 import com.example.reliatest.param.SearchProductParam
 import com.example.reliatest.param.UpdateProductParam
 import com.example.reliatest.repository.ProductRepository
@@ -82,6 +83,28 @@ class ProductViewModel(private val repository: ProductRepository) : BaseViewMode
                                 updateProductLiveData.value = it
                             } else {
                                 PopupUtil.showPopupError(it.message)
+                            }
+                        }
+                    }
+                    is ReliaResource.Error -> Unit
+                }
+            }
+        }
+    }
+
+    fun deleteProducts(param: DeleteProductParam) {
+        viewModelScope.launch {
+            productsLiveData.addSource(repository.deleteProducts(param)) { resource ->
+                when (resource) {
+                    is ReliaResource.Success -> {
+                        resource.data?.let {product ->
+                            if (product.message.isNullOrEmpty()) {
+                                val temp = productsLiveData.value
+                                val index = temp?.indexOfFirst { it.sku == product.sku }
+                                temp?.removeAt(index ?: return@let)
+                                productsLiveData.value = temp
+                            } else {
+                                PopupUtil.showPopupError(product.message)
                             }
                         }
                     }
