@@ -20,5 +20,6 @@ object Constant {
         const val REGISTER = "register"
         const val AUTH_LOGIN = "auth/login"
         const val ITEMS = "items"
+        const val ITEM_SEARCH = "item/search"
     }
 }

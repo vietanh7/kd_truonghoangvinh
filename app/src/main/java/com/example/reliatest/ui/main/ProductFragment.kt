@@ -1,6 +1,7 @@
 package com.example.reliatest.ui.main
 
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.reliatest.MainApplication
@@ -8,11 +9,14 @@ import com.example.reliatest.R
 import com.example.reliatest.adapter.ProductAdapter
 import com.example.reliatest.base.BaseFragment
 import com.example.reliatest.databinding.FragmentProductBinding
+import com.example.reliatest.param.SearchProductParam
+import com.example.reliatest.utils.PopupUtil
 import com.example.reliatest.viewmodel.ProductViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ProductFragment : BaseFragment<FragmentProductBinding>(), View.OnClickListener {
+class ProductFragment : BaseFragment<FragmentProductBinding>(), View.OnClickListener,
+    SearchView.OnQueryTextListener, SearchView.OnCloseListener {
     override val layoutId: Int
         get() = R.layout.fragment_product
 
@@ -24,6 +28,10 @@ class ProductFragment : BaseFragment<FragmentProductBinding>(), View.OnClickList
     override fun initViews() {
         binding.fragment = this
         binding.isLoggedIn = MainApplication.instance.token != null
+        if (binding.isLoggedIn) {
+            binding.searchView.setOnQueryTextListener(this)
+            binding.searchView.setOnCloseListener(this)
+        }
     }
 
     override fun initAdapters() {
@@ -42,9 +50,12 @@ class ProductFragment : BaseFragment<FragmentProductBinding>(), View.OnClickList
         viewModel.productsLiveData.observe(this) {
             productAdapter.submitList(it?.toMutableList())
         }
-        if (MainApplication.instance.token != null) {
-            viewModel.getProducts()
+        viewModel.networkError.observe(this) {
+            PopupUtil.showPopupError(it.first)
         }
+//        if (MainApplication.instance.token != null) {
+//            viewModel.getProducts()
+//        }
     }
 
     override fun onClick(v: View?) {
@@ -60,10 +71,36 @@ class ProductFragment : BaseFragment<FragmentProductBinding>(), View.OnClickList
             R.id.tvAddProduct -> {
             }
             R.id.tvLogout -> {
+                binding.isLoggedIn = false
                 MainApplication.instance.setToken(null)
                 viewModel.productsLiveData.value = null
-                binding.isLoggedIn = false
+                with(binding.searchView) {
+                    setOnQueryTextListener(null)
+                    setOnCloseListener(null)
+                    clearFocus()
+                    onActionViewCollapsed()
+                }
             }
         }
+    }
+
+    override fun onQueryTextChange(input: String?): Boolean {
+        if (input?.isEmpty() == true) {
+            viewModel.getProducts()
+        }
+        return true
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if (query?.isNotBlank() == true) {
+            viewModel.searchProducts(SearchProductParam(query))
+        }
+        return true
+    }
+
+    override fun onClose(): Boolean {
+        binding.searchView.clearFocus()
+        binding.searchView.onActionViewCollapsed()
+        return true
     }
 }

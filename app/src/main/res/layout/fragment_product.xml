@@ -91,21 +91,17 @@
             app:constraint_referenced_ids="tvRegister,tvLogin,vDivider" />
 
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtSearch"
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/space_xlarge"
             android:background="@drawable/bg_corner_gray"
-            android:drawableStart="@drawable/ic_search_outline"
-            android:drawablePadding="@dimen/padding_text"
-            android:hint="@string/search_by_sku"
-            android:padding="@dimen/space_small"
-            android:textSize="@dimen/text_paragraph"
             app:layout_constraintBottom_toBottomOf="@id/tvAddProduct"
             app:layout_constraintEnd_toStartOf="@id/tvAddProduct"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvAddProduct" />
+            app:layout_constraintTop_toTopOf="@id/tvAddProduct"
+            app:queryHint="@string/search_by_sku" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAddProduct"
@@ -130,7 +126,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtSearch" />
+            app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="@{isLoggedIn ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@id/searchView"
+            app:layout_constraintEnd_toEndOf="@id/searchView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/searchView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

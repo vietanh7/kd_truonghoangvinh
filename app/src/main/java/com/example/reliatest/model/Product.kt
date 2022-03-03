@@ -15,4 +15,7 @@ data class Product(
     val status: Int? = null,
     val created_at: String? = null,
     val updated_at: String? = null,
+
+    val success: Boolean? = null,
+    val message: String? = null,
 ) : Parcelable

@@ -6,6 +6,7 @@ import com.example.reliatest.model.*
 import com.example.reliatest.param.LoginDemoParam
 import com.example.reliatest.param.LoginParam
 import com.example.reliatest.param.RegisterParam
+import com.example.reliatest.param.SearchProductParam
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -16,12 +17,6 @@ interface ApiService {
 
     @POST("users-login")
     suspend fun loginDemo(@Body param: LoginDemoParam): Response<ObjectResponse<User>>
-
-    @GET("search-user")
-    suspend fun getUsers(
-        @Query("page") page: Int = 1,
-        @Query("current_per_page") perPage: Int = ITEM_PER_PAGE
-    ): Response<ListResponse<User>>
 
     @GET("feed")
     suspend fun getFeeds(
@@ -37,4 +32,7 @@ interface ApiService {
 
     @GET(Constant.EndPoint.ITEMS)
     suspend fun getProducts(): Response<ArrayList<Product>>
+
+    @POST(Constant.EndPoint.ITEM_SEARCH)
+    suspend fun searchProduct(@Body param: SearchProductParam): Response<Product>
 }
